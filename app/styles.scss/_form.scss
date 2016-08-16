@@ -1,0 +1,21 @@
+.form-control {
+  margin-bottom: 1em;
+}
+
+.btn {
+  display: inline-block;
+  outline: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0 1em;
+  color: #fff;
+  text-transform: uppercase;
+  height: 2.5em;
+  line-height: 2.5em;
+  border-radius: 5px;
+  
+  &-ok {
+    background-color: $green;
+  }
+} 

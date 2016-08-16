@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Images Loader",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Parse and load images from App Store and Google Play",
+    "description": "The description of the application"
+  }
+}

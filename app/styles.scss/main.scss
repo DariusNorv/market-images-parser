@@ -1,0 +1,19 @@
+@import 'colors';
+$padding: 10px;
+body {
+  padding: $padding;
+  width: 400px;
+  font-family: "Helvetica Neue", Helvetica;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.3em;
+}
+
+#imageFinder {
+  margin-top: 1em;
+}
+
+@import 'form';
