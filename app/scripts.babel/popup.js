@@ -119,20 +119,19 @@ document.querySelector('.minify').addEventListener('click', (e) => {
 //    xhr.onload = function () {
 //      xhr.setRequestHeader('Authorization', 'Basic zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
 //    }
-//
-//    //xhr.setRequestHeader('Request-Method', 'POST');
-//    //xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-//    //xhr.setRequestHeader('Access-Control-Allow-Headers', 'x-requested-with,Content-Type');
-//    //xhr.setRequestHeader('Content-Length', JSON.stringify(imgsData).length);
-//    //xhr.setRequestHeader('Authorization', 'Basic zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
-//    //xhr.setRequestHeader('Accept', 'application/json');
-//    //xhr.setRequestHeader('Accept', 'application/json');
-//    //xhr.setRequestHeader('Access-Control-Request-Method', 'POST');
-//    //xhr.setRequestHeader('Content-Type', 'application/json; utf-8');
-//    //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-//    console.log(xhr.withCredentials)
+   //
+  //  //xhr.setRequestHeader('Request-Method', 'POST');
+  //  //xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  //  //xhr.setRequestHeader('Access-Control-Allow-Headers', 'x-requested-with,Content-Type');
+  //  //xhr.setRequestHeader('Content-Length', JSON.stringify(imgsData).length);
+  //  //xhr.setRequestHeader('Authorization', 'Basic zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
+  //  //xhr.setRequestHeader('Accept', 'application/json');
+  //  //xhr.setRequestHeader('Accept', 'application/json');
+  //  //xhr.setRequestHeader('Access-Control-Request-Method', 'POST');
+  //  //xhr.setRequestHeader('Content-Type', 'application/json; utf-8');
+  //  //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+  //  console.log(xhr.withCredentials)
 
   });
-*/
-
 })
+*/

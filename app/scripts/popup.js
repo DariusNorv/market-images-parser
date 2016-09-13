@@ -76,22 +76,22 @@ form.addEventListener('submit', function (e) {
     }
   } else {}
 });
-
-document.querySelector('.minify').addEventListener('click', function (e) {
+/*
+document.querySelector('.minify').addEventListener('click', (e) => {
   e.preventDefault();
 
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
-    var imgsData = {
+    let imgsData = {
       source: {
         url: 'http://a3.mzstatic.com/us/r30/Purple49/v4/d0/82/df/d082df3e-3dd3-af08-c7c5-7f7047f72823/screen696x696.jpeg'
       }
     };
 
-    var tinyParams = {
+    const tinyParams = {
       token: 'zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE',
-      url: 'https://api.tinify.com/shrink'
-    };
+      url : 'https://api.tinify.com/shrink'
+    }
 
     // const req = new XMLHttpRequest();
     //
@@ -99,37 +99,39 @@ document.querySelector('.minify').addEventListener('click', function (e) {
     // //req.setRequestHeader('Authorization', 'Basic ' + tinyParams.token);
     // req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     //
-    // /*
+    //
     // req.onload = function () {
     //
-    // }*/
+    // }
     //
     // req.send("data=" + JSON.stringify(imgsData));
-    //
-    //     const xhr = new XMLHttpRequest();
-    //     xhr.open('POST','https://api.tinify.com/shrink', true);
-    //     xhr.withCredentials = true;
-    // //    xhr.useDefaultHeader = false;
-    //     xhr.setRequestHeader('Authorization', 'zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
-    //    xhr.setRequestHeader('Content-Type', 'application/jsonp; charset=UTF-8');
-    //    xhr.onload = function () {
-    //      console.log(xhr.responseText);
-    //    };
+//
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST','https://api.tinify.com/shrink', true);
+//     xhr.withCredentials = true;
+// //    xhr.useDefaultHeader = false;
+//     xhr.setRequestHeader('Authorization', 'zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
+//    xhr.setRequestHeader('Content-Type', 'application/jsonp; charset=UTF-8');
+//    xhr.onload = function () {
+//      console.log(xhr.responseText);
+//    };
 
-    //    xhr.onload = function () {
-    //      xhr.setRequestHeader('Authorization', 'Basic zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
-    //    }
-    //
-    //    //xhr.setRequestHeader('Request-Method', 'POST');
-    //    //xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    //    //xhr.setRequestHeader('Access-Control-Allow-Headers', 'x-requested-with,Content-Type');
-    //    //xhr.setRequestHeader('Content-Length', JSON.stringify(imgsData).length);
-    //    //xhr.setRequestHeader('Authorization', 'Basic zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
-    //    //xhr.setRequestHeader('Accept', 'application/json');
-    //    //xhr.setRequestHeader('Accept', 'application/json');
-    //    //xhr.setRequestHeader('Access-Control-Request-Method', 'POST');
-    //    //xhr.setRequestHeader('Content-Type', 'application/json; utf-8');
-    //    //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-    //    console.log(xhr.withCredentials)
+//    xhr.onload = function () {
+//      xhr.setRequestHeader('Authorization', 'Basic zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
+//    }
+   //
+  //  //xhr.setRequestHeader('Request-Method', 'POST');
+  //  //xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  //  //xhr.setRequestHeader('Access-Control-Allow-Headers', 'x-requested-with,Content-Type');
+  //  //xhr.setRequestHeader('Content-Length', JSON.stringify(imgsData).length);
+  //  //xhr.setRequestHeader('Authorization', 'Basic zCpXBTrVjD4JspyIGBoNJFFDAdHQuQNE');
+  //  //xhr.setRequestHeader('Accept', 'application/json');
+  //  //xhr.setRequestHeader('Accept', 'application/json');
+  //  //xhr.setRequestHeader('Access-Control-Request-Method', 'POST');
+  //  //xhr.setRequestHeader('Content-Type', 'application/json; utf-8');
+  //  //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+  //  console.log(xhr.withCredentials)
+
   });
-});
+})
+*/
