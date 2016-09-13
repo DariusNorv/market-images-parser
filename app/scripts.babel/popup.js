@@ -56,7 +56,7 @@ form.addEventListener('submit', (e) => {
 
         xhr.onreadystatechange = () => {
           if(xhr.readyState == 4 && xhr.status == 200) {
-            chrome.downloads.download({ url: img, filename: `${directory}/img${index++}.${xhr.getResponseHeader('Content-Type').split('/')[1]}`})
+            chrome.downloads.download({ url: img, filename: `slider-app/${directory}/img${index+1}.${xhr.getResponseHeader('Content-Type').split('/')[1]}`})
           }
         }
         xhr.send()
