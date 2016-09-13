@@ -15,15 +15,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     _resp.error = false;
     console.log(_resp);
 
-    if (_typeof(request.msg) != undefined) {
-      if (request.msg == 'updateMarket') {
+    if (_typeof(request.action) != undefined) {
+      if (request.action == 'updateMarket') {
         sendResponse(_resp);
       }
-      if (request.msg == 'startUpload') {
+      if (request.action == 'startUpload') {
         console.log('prepareUpload');
       }
     }
   }
+});
+
+chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
+  console.log(request);
 });
 
 function getCarouselInfo(store) {
@@ -41,15 +45,20 @@ function getCarouselInfo(store) {
     if (market == 'itunes') {
       carousel = document.querySelector('#content .iphone-screen-shots .image-wrapper');
       total = parseInt(carousel.parentNode.getAttribute('num-items'));
+
+      Array.prototype.slice.call(carousel.querySelectorAll('img')).forEach(function (item) {
+        files.push(item.getAttribute('src'));
+      });
     }
     if (market == 'googleplay') {
-      carousel = document.querySelector('.thumbnails-wrapper > .thumbnails');
-      total = carousel.querySelectorAll('img').length;
-    }
+      carousel = document.querySelectorAll('.full-screenshot');
+      total = carousel.length;
+      Array.prototype.slice.call(carousel).forEach(function (item) {
+        files.push(item.getAttribute('src').indexOf('http') > -1 || item.getAttribute('src').indexOf('https') > -1 ? item.getAttribute('src').replace(/-rw$/, '') : 'http:' + item.getAttribute('src').replace(/-rw$/, ''));
 
-    Array.prototype.slice.call(carousel.querySelectorAll('img')).forEach(function (item) {
-      files.push(item.getAttribute('src'));
-    });
+        console.log(item);
+      });
+    }
 
     response.total = total;
     response.files = files;
@@ -57,3 +66,7 @@ function getCarouselInfo(store) {
     return response;
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  getCarouselInfo();
+});

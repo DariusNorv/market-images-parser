@@ -12,17 +12,21 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     resp.error = false;
     console.log(resp);
     
-    if (typeof request.msg != undefined) {
-      if (request.msg == 'updateMarket') {
+    if (typeof request.action != undefined) {
+      if (request.action == 'updateMarket') {
         sendResponse(resp);  
       }
-       if (request.msg == 'startUpload') {
+       if (request.action == 'startUpload') {
         console.log('prepareUpload')
       }
     }
     
   }
-})
+});
+
+chrome.extension.onRequest.addListener((request, sender, sendResponse) => {
+  console.log(request);
+});
 
 function getCarouselInfo (store) {
   let market = false, files = [], response = {};
@@ -37,15 +41,21 @@ function getCarouselInfo (store) {
     if (market == 'itunes') {
       carousel = document.querySelector('#content .iphone-screen-shots .image-wrapper');
       total = parseInt(carousel.parentNode.getAttribute('num-items'));
+      
+       Array.prototype.slice.call(carousel.querySelectorAll('img')).forEach((item) => {
+        files.push(item.getAttribute('src'))  
+       });
+      
     }
     if (market == 'googleplay') {
-      carousel = document.querySelector('.thumbnails-wrapper > .thumbnails');
-      total = carousel.querySelectorAll('img').length;
+      carousel = document.querySelectorAll('.full-screenshot');
+      total = carousel.length;
+      Array.prototype.slice.call(carousel).forEach((item) => {
+        files.push(item.getAttribute('src').indexOf('http') > -1 || item.getAttribute('src').indexOf('https') > -1 ? item.getAttribute('src').replace(/-rw$/, '') : 'http:' + item.getAttribute('src').replace(/-rw$/, ''))
+        
+        console.log(item)
+      });
     }
-    
-    Array.prototype.slice.call(carousel.querySelectorAll('img')).forEach((item) => {
-     files.push(item.getAttribute('src'))  
-    });
     
     response.total = total;
     response.files = files;
@@ -54,3 +64,7 @@ function getCarouselInfo (store) {
     
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  getCarouselInfo();
+})

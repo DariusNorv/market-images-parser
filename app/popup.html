@@ -11,19 +11,28 @@
     <!-- endbuild -->
   </head>
   <body>
-    <h1>Выберите изображения для загрузки</h1>
-    
+    <h1>Доступны изображения для загрузки</h1>
+
+    <div id="imageList">
+
+    </div>
+
     <form action="" id="imageFinder" class="form">
+<!--
       <div class="form-control">
-        <input type="file" name="folder" id="folder" class="input" webkitdirectory>
+        <input type="file" name="folder" id="folder" class="input" webkitdirectory directory multiple>
       </div>
+-->
       <div class="form-control">
-        <button class="btn btn-ok" type="submit">Сохранить</button>  
+        <button class="btn btn-ok" type="submit">Сохранить</button>
       </div>
     </form>
 
+    <!-- <button class="btn btn-ok minify">Сминифаить</button> -->
+
     <!-- build:js scripts/popup-vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

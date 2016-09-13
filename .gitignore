@@ -7,8 +7,3 @@ test
 /app/bower_components/
 /bower_components
 package
-##
-!styles.scss
-!scripts.babel
-/app/scripts/
-/app/styles/

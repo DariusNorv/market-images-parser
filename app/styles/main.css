@@ -4,6 +4,12 @@ body {
   font-family: "Helvetica Neue", Helvetica;
 }
 
+#imageList:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 h1 {
   padding: 0;
   margin: 0;
@@ -12,6 +18,20 @@ h1 {
 
 #imageFinder {
   margin-top: 1em;
+}
+
+#imageList {
+  margin-top: 1em;
+  margin-left: -.1em;
+  margin-right: -.1em;
+}
+
+#imageList > .preview {
+  height: 10em;
+  width: auto;
+  display: block;
+  float: left;
+  padding: 0 .2em;
 }
 
 .form-control {
