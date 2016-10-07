@@ -12,15 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.tabs.sendMessage(tabs[0].id, {action: 'updateMarket', market: market}, function(response) {
       //console.log(response);
       if (typeof response !== 'undefined' && typeof response.error !== 'undefined' && !response.error) {
-        console.log(response);
+        const list = document.querySelector('#imageList'),
+          logoWrap = document.querySelector('#logo')
+
+        if (response.logo.length > 0) {
+          let logo = new Image();
+          logo.src = response.logo.indexOf('http') > -1 ? response.logo : 'https:' + response.logo;
+          logo.classList.add('logo')
+          logoWrap.appendChild(logo);
+          logoWrap.classList.add('visible');
+        }
 
         if (response.files.length > 0) {
-          const list = document.querySelector('#imageList');
           response.files.forEach((image) => {
             let img = new Image();
             //img.src = image.indexOf('http') > -1 || image.indexOf('https') > -1 ? image : 'http:' + image;
             img.src = image;
-            console.log(img.src)
             img.classList.add('preview');
             list.appendChild(img);
           })
@@ -33,6 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+});
+
+// Download Logo
+document.querySelector('#logo').addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log('Хер моржовый')
+
+    if (typeof data.logo !== 'undefined' && data.logo.length > 0) {
+      chrome.downloads.download({ url: data.logo, saveAs: true})
+    }
 })
 
 form.addEventListener('submit', (e) => {

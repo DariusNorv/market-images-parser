@@ -12,28 +12,45 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.tabs.sendMessage(tabs[0].id, { action: 'updateMarket', market: market }, function (response) {
       //console.log(response);
       if (typeof response !== 'undefined' && typeof response.error !== 'undefined' && !response.error) {
-        console.log(response);
+        (function () {
+          var list = document.querySelector('#imageList'),
+              logoWrap = document.querySelector('#logo');
 
-        if (response.files.length > 0) {
-          (function () {
-            var list = document.querySelector('#imageList');
+          if (response.logo.length > 0) {
+            var logo = new Image();
+            logo.src = response.logo.indexOf('http') > -1 ? response.logo : 'https:' + response.logo;
+            logo.classList.add('logo');
+            logoWrap.appendChild(logo);
+            logoWrap.classList.add('visible');
+          }
+
+          if (response.files.length > 0) {
             response.files.forEach(function (image) {
               var img = new Image();
               //img.src = image.indexOf('http') > -1 || image.indexOf('https') > -1 ? image : 'http:' + image;
               img.src = image;
-              console.log(img.src);
               img.classList.add('preview');
               list.appendChild(img);
             });
-          })();
-        }
+          }
 
-        data = response;
+          data = response;
+        })();
       } else {
         data = false;
       }
     });
   });
+});
+
+// Download Logo
+document.querySelector('#logo').addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log('Хер моржовый');
+
+  if (typeof data.logo !== 'undefined' && data.logo.length > 0) {
+    chrome.downloads.download({ url: data.logo, saveAs: true });
+  }
 });
 
 form.addEventListener('submit', function (e) {

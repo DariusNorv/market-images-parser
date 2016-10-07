@@ -3,7 +3,8 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 var carousel = void 0,
-    total = void 0;
+    total = void 0,
+    logo = void 0;
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log(request);
@@ -45,6 +46,7 @@ function getCarouselInfo(store) {
     if (market == 'itunes') {
       carousel = document.querySelector('#content .iphone-screen-shots .image-wrapper');
       total = parseInt(carousel.parentNode.getAttribute('num-items'));
+      logo = document.querySelector('#left-stack img.artwork').getAttribute('src-swap-high-dpi');
 
       Array.prototype.slice.call(carousel.querySelectorAll('img')).forEach(function (item) {
         files.push(item.getAttribute('src'));
@@ -53,15 +55,16 @@ function getCarouselInfo(store) {
     if (market == 'googleplay') {
       carousel = document.querySelectorAll('.full-screenshot');
       total = carousel.length;
+      logo = document.querySelector('img.cover-image').getAttribute('src').replace(/-rw$/, '');
+
       Array.prototype.slice.call(carousel).forEach(function (item) {
         files.push(item.getAttribute('src').indexOf('http') > -1 || item.getAttribute('src').indexOf('https') > -1 ? item.getAttribute('src').replace(/-rw$/, '') : 'http:' + item.getAttribute('src').replace(/-rw$/, ''));
-
-        console.log(item);
       });
     }
 
     response.total = total;
     response.files = files;
+    response.logo = logo;
 
     return response;
   }
