@@ -46,10 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // Download Logo
 document.querySelector('#logo').addEventListener('click', function (e) {
   e.preventDefault();
-  console.log('Хер моржовый');
-
   if (typeof data.logo !== 'undefined' && data.logo.length > 0) {
-    chrome.downloads.download({ url: data.logo, saveAs: true });
+    chrome.downloads.download({ url: data.logo.indexOf('http') > -1 ? data.logo : 'http:' + data.logo, saveAs: true });
   }
 });
 
