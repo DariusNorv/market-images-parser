@@ -58,12 +58,12 @@ function runContentScript(query) {
       //console.log(response);
       if (typeof response !== 'undefined' && typeof response.error !== 'undefined' && !response.error) {
         chrome.browserAction.setBadgeText({text: `${response.total}`});
-        chrome.browserAction.setIcon({path: "images/icon.png"});
-        chrome.browserAction.setPopup({popup: "popup.html"});
+        chrome.browserAction.setIcon({path: 'images/icon.png'});
+        chrome.browserAction.setPopup({popup: 'popup.html'});
       } else {
         chrome.browserAction.setBadgeText({text: ''});
-        chrome.browserAction.setPopup({popup: ""});
-        chrome.browserAction.setIcon({path: "images/icon.disabled.png"});
+        chrome.browserAction.setPopup({popup: ''});
+        chrome.browserAction.setIcon({path: 'images/icon.disabled.png'});
       }
       return response;
     });
