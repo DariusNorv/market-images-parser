@@ -1,4 +1,4 @@
-# Market Parser
+# Market Parser ![build status](https://travis-ci.org/DariusNorv/market-images-parser.svg?branch=master)
 This chrome extension automatically parsing appstore and google play links and download images into temp direcotory form sliders and logotype in 'JPG' or 'PNG'
 
 # Instalation notes
